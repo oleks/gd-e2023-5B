@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <title>5B Worksheet - Whack-A-Mole</title>
+    <style>
+ol li {
+  padding-top: 1em;
+}
+ol.latin-list {
+  list-style-type: lower-latin;
+}
+ol.roman-list {
+  list-style-type: lower-roman;
+}
+
+#board td{border-left-width:.0625pc;}#board td{border-bottom-width:.0625pc;}#board td{border-right-width:.0625pc;}#board td{border-top-width:.0625pc;}#board td{border-left-style:solid;}#board td{border-bottom-style:solid;}#board td{border-right-style:solid;}#board{border-collapse:collapse;}#board td{border-top-style:solid;}#board td{border-left-color:black;}#board td{border-bottom-color:black;}#board td{border-right-color:black;}#board td{border-top-color:black;}#board td{border-image:none;}#board td{width:5em;}#board td{height:5em;}[class~=mole]{}[class~=mole]:hover{cursor:crosshair;}
+.mole {
+  background: url('data:image/png;base64,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') center center / cover no-repeat;
+}
+    </style>
+  </head>
+  <body>
+    <h1>5B Worksheet - Whack-A-Mole</h1>
+    <p>
+      Formålet med denne opgave er at lave en lille Whack-A-Mole spil.
+    </p>
+    <p>
+      Spillet går ud på at der er en række huller som en muldvarp kan dukke op i. Muldvarpen pirrer ud af et hul, og gemmer sig igen. Som spiller, har man en hammer. Man kan slå muldvarpen når den pirrer ud af et hul. Jo flere gange man når at slå muldvarpen, jo flere point får man.
+    </p>
+    <div>
+      <script language="javascript">
+        <!--
+        //
+        document.write(unescape('%3C%70%3E%50%6F%69%6E%74%73%3A%20%3C%73%70%61%6E%20%69%64%3D%22%70%6F%69%6E%74%73%22%3E%30%3C%2F%73%70%61%6E%3E%3C%2F%70%3E%0A%20%20%20%20%3C%73%65%6C%65%63%74%20%69%64%3D%22%73%69%7A%65%22%3E%0A%20%20%20%20%20%20%3C%6F%70%74%69%6F%6E%3E%33%78%31%3C%2F%6F%70%74%69%6F%6E%3E%0A%20%20%20%20%20%20%3C%6F%70%74%69%6F%6E%3E%35%78%31%3C%2F%6F%70%74%69%6F%6E%3E%0A%20%20%20%20%20%20%3C%6F%70%74%69%6F%6E%3E%38%78%31%3C%2F%6F%70%74%69%6F%6E%3E%0A%20%20%20%20%3C%2F%73%65%6C%65%63%74%3E%0A%20%20%20%20%3C%74%61%62%6C%65%20%69%64%3D%22%62%6F%61%72%64%22%3E%0A%20%20%20%20%20%20%3C%74%62%6F%64%79%3E%0A%20%20%20%20%20%20%20%20%3C%74%72%3E%0A%20%20%20%20%20%20%20%20%20%20%3C%74%64%3E%3C%2F%74%64%3E%0A%20%20%20%20%20%20%20%20%20%20%3C%74%64%3E%3C%2F%74%64%3E%0A%20%20%20%20%20%20%20%20%20%20%3C%74%64%3E%3C%2F%74%64%3E%0A%20%20%20%20%20%20%20%20%3C%2F%74%72%3E%0A%20%20%20%20%20%20%3C%2F%74%62%6F%64%79%3E%0A%20%20%20%20%3C%2F%74%61%62%6C%65%3E'));
+        //-->
+        </script>
+    </div>
+    <section>
+      <h3>Del 1 - Spillebræt</h3>
+      <ol class="latin-list">
+        <li>Lav en HTML fil med et <code>&lt;table id="board"&gt;</code>-tag inde i kroppen.</li>
+        <li>Tilføj en række med 3 tomme celler til tabellen.</li>
+        <li>For at de tomme celler bliver synlige, lav et <code>&lt;style&gt;</code>-tag i hovedet af filen, lad cellene have en vis størrelse, og lav en kant rundt om cellene.
+          <br/>
+          <br/>
+          F.eks. således:
+          <ol class="roman-list">
+            <li>Lad <code>#board</code> have <pre>border-collapse: collapse;</pre>
+            (Hvad betyder <code>#board</code>? Kunne vi have brugt en anden CSS-selector?)
+            </li>
+            <li>Lad en <code>#board</code> celle have:
+<pre>border: 1px solid black;
+width: 5em;
+height: 5em;
+</pre></li>
+(<code>em</code> er en relativ enhed som svarer ca. til størrelsen af et bogstav.)
+          </ol>
+        </li>
+        <li>Tilføj et <code>&lt;select id="size"&gt;</code>-tag ovenover tabellen med følgende muligheder: <code>3x1</code>, <code>5x1</code>, og <code>8x1</code>. (Forklaring: <code>&lt;select&gt;</code> behøver ikke at forekomme inde i en <code>&lt;form&gt;</code>. Denne opgave handler ikke om <code>&lt;form&gt;</code>.)</li>
+        <li>Tilføj et <code>&lt;script&gt;</code>-tag til sidst i kroppen af din HTML.</li>
+        <li>Lav en konstant <code>table</code> og en konstant <code>size</code>, som tager fat i <code>&lt;table id="board"&gt;</code>- og <code>&lt;select id="size"&gt;</code>-tag'et, hhv. (Hint: Brug <code>document.getElementById</code>.)</li>
+        <li>Lav en funktion <code>sizeChanged</code>, og tilføj funktionen som en "event listener" på begivenheden <code>"changed"</code> på <code>size</code>-elementet. Altså funktionen skal afvikles, når brugeren ændrer valget i drop-down. Lad funktionen skive <code>size.value</code> ud til konsolen, som en start.</li>
+        <li>Lad <code>sizeChanged</code> ryde <code>table</code> for ekisterende celler (fjern evt. hele rækker), og tilføje passende celler ift. den valgte størrelse. (Hint: En måde at ryde <code>table</code> er at sætte <code>table.innerHTML = ''</code>. Brug en <code>for</code>-løkke til at lave nye celler.)</li>
+      </ol>
+    </section>
+    <section>
+      <h3>Del 2 - Muldvarpen</h3>
+      <ol class="latin-list">
+        <li>Vi vælger at dynamisk dekorere den celle som muldvarpen dukker op i med en klasse <code>mole</code>. Det skal være synligt for brugeren når muldvarpen dukker op.
+          <br/>
+          <br/>
+          F.eks. kan vi lade klassen have følgende stil:
+<pre>background-color: green;</pre>
+Giv synlig stil til <code>mole</code> klassen i <code>&lt;style&gt;</code>-tag'et i hovedet af filen. Test at klassen virker ved at prøve at sætte klassen manuelt på enkelte celler på spillebrættet.
+</li>
+        <li>Klassen <code>mole</code> skal sættes på én celle ad gangen, og vi må skifte hvilken celle det er, efter en vis timeout. Det klarer vi i denne, samt den næste opgave.
+        <br/>
+        <br/>
+        Start med at lave en funktion <code>clearMole</code> som finder det element som har klassen <code>mole</code>, og fjerner klassen fra listen af klasser som elementet har. (Hint: brug <code>document.getElementsByClass</code> eller <code>document.querySelector</code>, samt <code>el.classList.remove</code> når du har fundet et passende element <code>el</code>.) Husk at det ikke er en selvfølge at der findes en celle som har klassen <code>mole</code>.
+        <br/>
+        <br/>
+        Test at funktionen virker ved at sætte klassen manuelt på en celle, og så kalde funktionen fra konsolen.
+        </li>
+        <li>
+          Lav en funktion <code>setRandomMole</code> som udfører følgende:
+          <ol>
+            <li>Ryder <code>mole</code> klassen fra et eksisterende element, hvis nogen har den sat.</li>
+            <li>Vælger en tilfældig celle (Hint: brug <code>Math.floor(Math.random() * n_cols)</code>, hvor du dog lige skal finde <code>n_cols</code>.)</li>
+            <li>Tilføjer <code>mole</code> klassen til den valgte celle (Hint: brug <code>el.classList.add</code> når du har fundet et passende element <code>el</code>.)</li>
+            <li>Kalder sig selv efter 2 sekunder ved at bruge <code>setTimeout</code> og 2000 millisekunder som timeout:
+<pre>let moleTimeout;
+function setRandomMole() {
+  clearTimeout(moleTimeout);
+  // ... øvrig kode
+  moleTimer = setTimeout(setRandomMole, 2000);
+}
+</pre>
+OBS! Det er vigtigt at <code>clearTimeout</code> i starten af <code>setRandomMole</code>, ellers får vi flere og flere uendelige løkker i gang!
+<br/>
+<br/>
+Denne konstruktion med en <code>moleTimeout</code> global variabel,
+tillader os at stoppe rekursionen senere, for at evt. standse spillet:
+<pre>clearTimeout(moleTimeout);</pre></li>
+          </ol>
+        </li>
+        <li>Kald <code>setRandomMole</code> som det allersidste i <code>&lt;script&gt;</code> for at starte spillet når filen åbnes.</li>
+      </ol>
+    </section>
+    <section>
+      <h3>Del 3 - Hammeren</h3>
+      <ol class="latin-list">
+        <li>Tilføj en funktion <code>checkForMole</code>, som tager imod en <code>event</code>, og lad funktionen være en "event listener" på begivenheden <code>"click"</code> på de celler som fyldes ind i spillebrættet. (Hint: Udvid funktionen <code>sizeChanged</code>, og brug <code>addEventListener</code> på hver celle som skabes der.)
+        
+          <br/>
+        <br/>
+        Lad funktionen skrive <code>event.target</code> til konsolen som en start.
+          <br/>
+        <br/>
+        OBS! Kald <code>sizeChanged()</code> i slutningen af <code>&lt;script&gt;</code>-tag'et for at få ovenstående binding mellem de 3 oprindelige celler og <code>checkForMole</code>.</li>
+        <li>Placer en <code>&lt;span id="points">0&lt;/span></code> et sted i din HTML (f.eks. ovenover spillebrættet). Her vil vi vise spilleren's skore.
+        <br/>
+      <br/>
+    (Hvad er et <code>&lt;span&gt;</code>?)</li>
+        <li>Lad <code>checkForMole</code> tjekke om klasse-listen for det givet <code>event.target</code> indeholder <code>mole</code>. Altså om der er blevet trykket på et element er dekoreret med klassen <code>mole</code>. Hvis ja, så tæller vi et skore op.
+          <br/>
+          <br/>
+          (Hint: Det kan give mening at have en global skore variabel som heltal, hellere end at operere med ovenstående HTML element. HTML elementet er bedst brugt kun til at vise det opdateret skore, og ikke til at holde styr på den.)
+          <br/><br/> Efter skoret er talt op, så lad mulvarpen smutte til en ny celle.</li>
+      </ol>
+    </section>
+    <section>
+      <h3>Del 4 - Udvidelser (Valgfri!)</h3>
+      <ol class="latin-list">
+        <li>Det kan være mere spændende med et 3x3 spillebræt.
+        <br/>
+        <br/>
+        Da skal vi bruge nogle indlejrede for-løkker.
+        </li>
+        <li>Lav en finere <code>mole</code> stil. F.eks. med brug af et billede af en muldvarp.
+<pre>.mole {
+  // ...
+  background-image: url('mole.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+</pre>
+        </li>
+        <li>Man kan også styre kursoren som vises når man bevæger musen hen over en muldvarp.
+<pre>.mole:hover {
+  // ...
+  cursor: url('hammer.png'), auto;
+}</pre>
+        </li>
+        <li>
+          Muldvarpen kan dukke op i samme celle hvor hammeren er. Det er ikke god spilmekanik. Få muldvarpen til at dukke op i en ny celle hver gang.
+        </li>
+      </ol>
+    </section>
+    <script>
+const _0x529104=_0x4f47;(function(_0x11f13a,_0x536072){const _0x5a9523=_0x4f47,_0x559baa=_0x11f13a();while(!![]){try{const _0x1e4d92=parseInt(_0x5a9523(0x90))/0x1+parseInt(_0x5a9523(0x84))/0x2*(parseInt(_0x5a9523(0x86))/0x3)+parseInt(_0x5a9523(0x81))/0x4+-parseInt(_0x5a9523(0x8a))/0x5+parseInt(_0x5a9523(0x83))/0x6+-parseInt(_0x5a9523(0x88))/0x7+-parseInt(_0x5a9523(0x8e))/0x8;if(_0x1e4d92===_0x536072)break;else _0x559baa['push'](_0x559baa['shift']());}catch(_0x36f37c){_0x559baa['push'](_0x559baa['shift']());}}}(_0x4323,0x273e3));const board=document[_0x529104(0x85)](_0x529104(0x80)),size=document['getElementById']('size');function _0x4323(){const _0x7df7f0=['click','add','addEventListener','log','board','688296CwrHmk','children','1210944fpikOM','3394XxeHrJ','getElementById','222uqECod','value','963109ZwFtUT','split','1308285pwPOIo','innerHTML','remove','.mole','1628200DKJXLU','length','264032cWzZnf','mole','textContent','createElement','classList','appendChild','contains'];_0x4323=function(){return _0x7df7f0;};return _0x4323();}let points=0x0;const pointsElement=document[_0x529104(0x85)]('points');function checkForMole(_0x2103e6){const _0x386268=_0x529104;_0x2103e6['target'][_0x386268(0x94)][_0x386268(0x7b)](_0x386268(0x91))&&(points++,pointsElement[_0x386268(0x92)]=points,setRandomMole());}function sizeChanged(){const _0x17a7e3=_0x529104;console[_0x17a7e3(0x7f)](size[_0x17a7e3(0x87)]),board[_0x17a7e3(0x8b)]='';let _0xa20968=document[_0x17a7e3(0x93)]('tr'),_0x315200=parseInt(size['value'][_0x17a7e3(0x89)]('x')[0x0]);for(var _0x416a05=0x0;_0x416a05<_0x315200;_0x416a05++){let _0x433530=document[_0x17a7e3(0x93)]('td');_0x433530[_0x17a7e3(0x7e)](_0x17a7e3(0x7c),checkForMole),_0xa20968['appendChild'](_0x433530);}board[_0x17a7e3(0x7a)](_0xa20968);}function _0x4f47(_0x1a917a,_0x28b819){const _0x4323bf=_0x4323();return _0x4f47=function(_0x4f4788,_0x4a2155){_0x4f4788=_0x4f4788-0x7a;let _0x98a4be=_0x4323bf[_0x4f4788];return _0x98a4be;},_0x4f47(_0x1a917a,_0x28b819);}size['addEventListener']('change',sizeChanged);function clearMole(){const _0x298fc4=_0x529104,_0x515267=document['querySelector'](_0x298fc4(0x8d));_0x515267&&_0x515267[_0x298fc4(0x94)][_0x298fc4(0x8c)](_0x298fc4(0x91));}let moleTimer;function setRandomMole(){const _0x40579a=_0x529104;clearTimeout(moleTimer),clearMole();const _0x1f912e=board['querySelector']('tr'),_0x147e9b=Math['floor'](Math['random']()*_0x1f912e[_0x40579a(0x82)][_0x40579a(0x8f)]);_0x1f912e[_0x40579a(0x82)][_0x147e9b][_0x40579a(0x94)][_0x40579a(0x7d)](_0x40579a(0x91)),moleTimer=setTimeout(setRandomMole,0x7d0);}sizeChanged(),setRandomMole();
+    </script>
+  </body>
+</html>
